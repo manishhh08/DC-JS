@@ -91,7 +91,7 @@ const animalList = [animal1, animal2];
 
 // console.log(animal2.greet());
 
-for (let animal of animalList) {
-  animal.species;
+for (let a of animalList) {
+  a.species;
 }
-console.log(animalList.animal1.type);
+console.log(animalList.animal1);
