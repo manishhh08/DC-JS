@@ -8,48 +8,48 @@ let meters1 = 101;
 let kilometers1 = meters1 * 10000;
 
 function meterToKiloMeter(meterUnit) {
-  console.log(meterUnit * 1000);
+  //console.log(meterUnit * 1000);
 
   return meterUnit * 1000;
 }
 
 let a = meterToKiloMeter(90);
 
-console.log("VALIE OF A: ", a);
+//console.log("VALIE OF A: ", a);
 meterToKiloMeter(200);
 meterToKiloMeter(300);
 
 function areaOfRectangle(length, breadth, width = 10) {
-  console.log(width);
+  //console.log(width);
   return length * breadth * width;
 }
 
-console.log(areaOfRectangle(10, 20));
+//console.log(areaOfRectangle(10, 20));
 
 const areaOfCircle = function (radius) {
   return Math.PI * radius * radius;
 };
 
-console.log(areaOfCircle(100));
+//console.log(areaOfCircle(100));
 
 const volumeOfPyramid = (length, height) => {
   return (1 / 3) * length * length * height;
 };
 
-console.log(volumeOfPyramid(10, 100));
+//console.log(volumeOfPyramid(10, 100));
 
 // temperature converter function
 // convert celcius to fahrenheit
 
 (function () {
-  console.log("IMMEDIAT FUNCTION");
+  //console.log("IMMEDIAT FUNCTION");
 })();
 
 const vofpyramid = (length = 10, height = 10) => {
   return (1 / 3) * length * length * height;
 };
 
-console.log(vofpyramid(1000));
+//console.log(vofpyramid(1000));
 
 const person = {
   firstName: "Jane",
