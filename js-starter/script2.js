@@ -85,7 +85,7 @@ const person = {
     }
   },
 };
-console.log("OBKJECT");
+console.log("OBJECT");
 
 console.log(person.age);
 console.log(person["isMarried"]);
@@ -114,18 +114,18 @@ const animal = {
 
 let { name, age, breed } = animal;
 
-console.log(name, breed, age);
+//console.log(name, breed, age);
 
 // DATE OBJECT
 
-let currentDate = new Date();
-console.log(currentDate);
+// let currentDate = new Date();
+// console.log(currentDate);
 
-console.log(currentDate.getFullYear());
+// console.log(currentDate.getFullYear());
 
-let newDate = new Date("2024-01-6");
-console.log(newDate);
-console.log(newDate.getMonth());
+// let newDate = new Date("2024-01-6");
+// console.log(newDate);
+// console.log(newDate.getMonth());
 
-let userInput = prompt("Please enter your name:");
-console.log("Hello, " + userInput);
+// let userInput = prompt("Please enter your name:");
+// console.log("Hello, " + userInput);
