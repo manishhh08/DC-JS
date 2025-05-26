@@ -126,6 +126,34 @@
         </div>
       </div>
     </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="liveToast"
+        class="toast"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="toast-header">
+          <img src="..." class="rounded me-2" alt="..." />
+          <strong class="me-auto">TASK</strong>
+          <small>0 sec ago</small>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="toast"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="toast-body">
+          <span id="toast-msg"> </span>
+        </div>
+      </div>
+    </div>
+    <audio id="chime-audio">
+      <source src="assets/chime.mp3" />
+    </audio>
   </body>
 
   <script
