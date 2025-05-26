@@ -1,13 +1,9 @@
-// let addBtn = document.getElementById("addBtn");
-
-// addBtn.addEventListener("click", () => {
-//   alert("CLICKED");
-// });
-
 const toastLiveExample = document.getElementById("liveToast");
 const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
 const toastContentElm = document.getElementById("toast-msg");
 const chimeAudioElm = document.getElementById("chime-audio");
+const swooshAudioElm = document.getElementById("swoosh-audio");
+const deleteAudioElm = document.getElementById("delete-audio");
 
 const generateUniqueId = () => {
   let stringGenerator =
@@ -24,12 +20,7 @@ const generateUniqueId = () => {
   return stringValue;
 };
 
-let taskList = [
-  { id: generateUniqueId(), task: "Initial Task", hour: 10, type: "good" },
-  { id: generateUniqueId(), task: "Initial Task", hour: 10, type: "good" },
-  { id: generateUniqueId(), task: "Initial Task", hour: 10, type: "bad" },
-  { id: generateUniqueId(), task: "Initial Task", hour: 10, type: "bad" },
-];
+let taskList = [];
 
 const businessRule = (taskObj) => {
   const MAX_WEEKLY_HOUR = 168;
@@ -63,10 +54,6 @@ const addTask = () => {
   let taskElement = document.getElementById("task");
   let hourElement = document.getElementById("hour");
   let typeElement = document.getElementById("type");
-
-  //   alert(taskElement.value);
-  //   alert(hourElement.value);
-  //   alert(typeElement.value);
 
   //   create the task object
   const taskObject = {
@@ -186,7 +173,7 @@ const displayTaskList = () => {
 };
 
 const deleteTask = (id) => {
-  alert(id);
+  //alert(id);
 
   // update the task list without the task with the id
   taskList = taskList.filter((item) => item.id != id);
@@ -199,17 +186,22 @@ const deleteTask = (id) => {
 
   // re render the tasklist
   displayTaskList();
+  //delete pop sound effect
+  deleteAudioElm.play();
 };
 
 const swapTask = (id) => {
-  // get the task with the id
-  let task = taskList.find((item) => item.id == id);
-
-  // change the task type
-  task.type = task.type == "good" ? "bad" : "good";
-
-  // re render the tasklist
+  //alert(id); //update task list by swapping
+  let task = taskList.find((item) => {
+    return item.id == id;
+  });
+  if (task.type == "good") {
+    task.type = "bad";
+  } else {
+    task.type = "good";
+  }
   displayTaskList();
+  //swap sound effect
+  swooshAudioElm.play();
 };
-
 displayTaskList();
