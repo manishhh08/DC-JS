@@ -10,14 +10,10 @@ const addTask = () => {
   let hourElement = document.getElementById("hour");
   let typeElement = document.getElementById("type");
 
-  //   alert(taskElement.value);
-  //   alert(hourElement.value);
-  //   alert(typeElement.value);
-
   //   create the task object
   const taskObject = {
     task: taskElement.value,
-    hour: hourElement.value,
+    hour: parseInt(hourElement.value),
     type: typeElement.value,
   };
 
@@ -30,6 +26,24 @@ const addTask = () => {
 
   //   displaying the updated task list in the ui
   displayTaskList();
+};
+
+const updateTotalHours = () => {
+  let totalHour = taskList.reduce((acc, item) => {
+    return acc + parseInt(item.hour);
+  }, 0);
+
+  let totalHourElm = document.getElementById("totalHour");
+  totalHourElm.innerText = totalHour;
+  console.log("TOTAL:", totalHour);
+};
+
+const updateBadHours = () => {
+  let totalBadHour = taskList.reduce((acc, item) => {
+    return acc + parseInt(item.hour);
+  }, 0);
+  let totalHourElm = document.getElementById("totalBadHour");
+  totalHourElm.innerText = totalBadHour;
 };
 
 const displayTaskList = () => {
@@ -83,6 +97,12 @@ const displayTaskList = () => {
   }
 
   badListElm.innerHTML = badtrList;
+
+  //   update total hours
+  updateTotalHours();
+
+  // update bad hours
+  updateBadHours();
 };
 
 displayTaskList();
