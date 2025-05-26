@@ -49,7 +49,6 @@ const businessRule = (taskObj) => {
 
   return true;
 };
-
 const addTask = () => {
   let taskElement = document.getElementById("task");
   let hourElement = document.getElementById("hour");
@@ -98,11 +97,24 @@ const updateTotalHours = () => {
   totalHourElm.innerText = totalHour;
   console.log("TOTAL:", totalHour);
 };
+//update good hours
+const updateGoodHours = () => {
+  let goodHour = taskList.reduce((acc, item) => {
+    if (item.type == "good") {
+      return acc + parseInt(item.hour);
+    } else return acc + 0;
+  }, 0);
 
+  let goodHourElm = document.getElementById("goodHour");
+  goodHourElm.innerText = goodHour;
+  console.log("TOTAL:", goodHour);
+};
+//update bad hours
 const updateBadHours = () => {
   let badHour = taskList.reduce((acc, item) => {
-    if (item.type == "bad") return acc + parseInt(item.hour);
-    else return acc + 0;
+    if (item.type == "bad") {
+      return acc + parseInt(item.hour);
+    } else return acc + 0;
   }, 0);
 
   let badHourElm = document.getElementById("badHour");
@@ -167,7 +179,8 @@ const displayTaskList = () => {
 
   //   update total hours
   updateTotalHours();
-
+  //update good hours
+  updateGoodHours();
   // update bad hours
   updateBadHours();
 };
@@ -190,6 +203,7 @@ const deleteTask = (id) => {
   deleteAudioElm.play();
 };
 
+//swap tables
 const swapTask = (id) => {
   //alert(id); //update task list by swapping
   let task = taskList.find((item) => {
@@ -200,6 +214,12 @@ const swapTask = (id) => {
   } else {
     task.type = "good";
   }
+  //toast section
+  toastContentElm.innerText = "TASK SWAPPED";
+
+  // show the toast
+  toastBootstrap.show();
+
   displayTaskList();
   //swap sound effect
   swooshAudioElm.play();
