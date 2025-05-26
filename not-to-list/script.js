@@ -17,12 +17,12 @@ const addTask = () => {
     type: typeElement.value,
   };
 
-  console.log(taskObject);
+  //console.log(taskObject);
 
   //   push the new task to task list
   taskList.push(taskObject);
 
-  console.log(taskList);
+  //console.log(taskList);
 
   //   displaying the updated task list in the ui
   displayTaskList();
@@ -40,10 +40,16 @@ const updateTotalHours = () => {
 
 const updateBadHours = () => {
   let totalBadHour = taskList.reduce((acc, item) => {
-    return acc + parseInt(item.hour);
+    if (item.type === "bad") {
+      return acc + parseInt(item.hour);
+    } else {
+      return acc + 0;
+    }
   }, 0);
-  let totalHourElm = document.getElementById("totalBadHour");
-  totalHourElm.innerText = totalBadHour;
+  let totalBadHourElm = document.getElementById("totalBadHour");
+
+  console.log(totalBadHour);
+  totalBadHourElm.innerText = totalBadHour;
 };
 
 const displayTaskList = () => {
@@ -77,7 +83,7 @@ const displayTaskList = () => {
   let badtrList = "";
   //   loop through taskList
   for (item of taskList) {
-    console.log("ITEM", item);
+    //console.log("ITEM", item);
     if (item.type === "bad") {
       badtrList =
         badtrList +
