@@ -22,6 +22,14 @@ const generateUniqueId = () => {
 
 let taskList = [];
 
+//add tasklist to local storage
+const updateLocalStorage = () => {
+  let taskListString = JSON.stringify(taskList);
+
+  //add json string value to local storage
+  localStorage.setItem("taskList", taskListString);
+};
+
 const businessRule = (taskObj) => {
   const MAX_WEEKLY_HOUR = 168;
 
@@ -58,7 +66,9 @@ const addTask = () => {
   const taskObject = {
     id: generateUniqueId(),
     task: taskElement.value,
-    hour: parseInt(hourElement.value),
+    //shorthand if statement
+    hour: parseInt(hourElement.value === "" ? 0 : hourElement.value),
+    //hour: parseInt(hourElement.value),
     type: typeElement.value,
   };
 
@@ -68,7 +78,9 @@ const addTask = () => {
     //   push the new task to task list
     taskList.push(taskObject);
 
-    console.log(taskList);
+    //console.log(taskList);
+    //call storage function here
+    updateLocalStorage();
 
     //   displaying the updated task list in the ui
     displayTaskList();
@@ -197,6 +209,9 @@ const deleteTask = (id) => {
   // show the toast
   toastBootstrap.show();
 
+  //call storage function here
+  updateLocalStorage();
+
   // re render the tasklist
   displayTaskList();
   //delete pop sound effect
@@ -219,9 +234,18 @@ const swapTask = (id) => {
 
   // show the toast
   toastBootstrap.show();
-
+  //update local storage
+  updateLocalStorage();
   displayTaskList();
   //swap sound effect
   swooshAudioElm.play();
 };
+
+//retrieve data from storage
+let taskListFromLocalStorage = localStorage.getItem("taskList") ?? [];
+
+taskList = JSON.parse(taskListFromLocalStorage) || [];
+//call storage function here
+//updateLocalStorage();
+//render display at the end
 displayTaskList();
