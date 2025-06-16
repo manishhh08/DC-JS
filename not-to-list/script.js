@@ -244,7 +244,7 @@ const swapTask = (id) => {
 //retrieve data from storage
 let taskListFromLocalStorage = localStorage.getItem("taskList") ?? [];
 
-taskList = JSON.parse(taskListFromLocalStorage) || [];
+taskList = JSON.parse(taskListFromLocalStorage) || "[]";
 //call storage function here
 //updateLocalStorage();
 //render display at the end
